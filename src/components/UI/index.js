@@ -1,7 +1,7 @@
-// import MyInput from "./MyInput.vue";
-// import MyModal from "./MyModal.vue";
-// import MyButton from "./MyButton.vue";
-// import MySelect from './MySelect.vue'
+import MyInput from "./MyInput.vue";
+import MyModal from "./MyModal.vue";
+import MyButton from "./MyButton.vue";
+import MyCashTable from "./MyCashTable.vue";
+import MyArticle from "./MyArticle.vue";
 
-
-export default [];
+export default [MyButton, MyCashTable, MyModal, MyInput, MyArticle];

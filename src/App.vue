@@ -1,31 +1,33 @@
 <script>
 import initializeApp from "./mixin/initializeApp";
-import logItFunc from "./services/api/core/request";
+import BalanceActions from "./components/BalanceActions.vue";
+import ProfitArticles from "./components/ProfitArticles.vue";
+import ExpenseArticles from "./components/ExpenseArticles.vue";
 
 export default {
-  components: {},
-  mixins: [initializeApp, logItFunc],
+  components: { BalanceActions, ProfitArticles, ExpenseArticles },
+  mixins: [initializeApp],
   data: () => {
     return {};
   },
-  mounted() {
-    this.initApp();
-    this.logIt();
-  },
+  mounted() {},
 };
 </script>
 
 <template>
-  <div class="container"></div>
+  <div class="container">
+    <BalanceActions />
+    <ProfitArticles />
+    <ExpenseArticles />
+  </div>
 </template>
 
-<style>
+<style scoped>
 .container {
-  width: 1380px;
+  width: 1800px;
   display: flex;
   justify-content: space-between;
   margin: 0 auto;
-  border: 1px solid black;
   padding: 40px 0 0 0;
 }
 </style>
