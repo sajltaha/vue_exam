@@ -3,6 +3,11 @@ import initializeApp from "../mixin/initializeApp";
 
 export default {
   mixins: [initializeApp],
+  methods: {
+    deleteCard(id, sum) {
+      this.deleteProfit(sum, id);
+    },
+  },
 };
 </script>
 
@@ -15,10 +20,12 @@ export default {
         :key="article.id"
         :border="'3px solid #3C5F41'"
         :colorBtn="'white'"
-        :sum="article.sum"
+        :sum="parseInt(article.sum)"
         :date="article.date"
         :message="article.message"
         :background="'#55885D'"
+        :id="parseInt(article.id)"
+        @delete-card="deleteCard"
       />
     </div>
     <MyCashTable

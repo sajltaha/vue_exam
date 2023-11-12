@@ -19,6 +19,14 @@ const mutations = {
   SET_OUTCOME: (state, data) => {
     state.outcome = state.outcome + parseInt(data);
   },
+  DELETE_PROFIT: (state, data) => {
+    state.balance = state.balance - parseInt(data);
+    state.income = state.income - parseInt(data);
+  },
+  DELETE_EXPENSE: (state, data) => {
+    state.balance = state.balance + parseInt(data);
+    state.outcome = state.outcome - parseInt(data);
+  },
 };
 const actions = {
   SET_BALANCE: ({ commit }) => {
@@ -31,6 +39,12 @@ const actions = {
   SET_OUTCOME: ({ commit }, payload) => {
     commit("SET_OUTCOME", payload);
     commit("SET_DIFFERENCE");
+  },
+  DELETE_PROFIT: ({ commit }, payload) => {
+    commit("DELETE_PROFIT", payload);
+  },
+  DELETE_EXPENSE: ({ commit }, payload) => {
+    commit("DELETE_EXPENSE", payload);
   },
 };
 export default {

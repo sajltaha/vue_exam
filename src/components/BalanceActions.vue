@@ -161,14 +161,14 @@ export default {
         :width="'265px'"
         :background="'#55885D'"
         :description="'MAX PROFIT'"
-        :price="STATE_RECORDS.maxProfit"
+        :price="parseInt(STATE_RECORDS.maxProfit)"
         :color="'white'"
       />
       <MyCashTable
         :width="'265px'"
         :background="'#BC5D78'"
         :description="'MAX EXPENSE'"
-        :price="STATE_RECORDS.maxExpense"
+        :price="parseInt(STATE_RECORDS.maxExpense)"
         :color="'white'"
       />
     </div>

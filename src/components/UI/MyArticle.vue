@@ -6,9 +6,10 @@ export default {
     colorBtn: { type: String, required: true },
     message: { type: String, required: true },
     sum: { type: Number, required: true },
-    date: { type: Number, required: true },
+    date: { type: String, required: true },
     background: { type: String, required: true },
     category: { type: String },
+    id: { type: Number, required: true },
   },
 };
 </script>
@@ -22,7 +23,11 @@ export default {
       </div>
       <h3>{{ date }}</h3>
     </div>
-    <MyButton :background="background" :border="border" :color="colorBtn"
+    <MyButton
+      @click="$emit('delete-card', id, sum, category)"
+      :background="background"
+      :border="border"
+      :color="colorBtn"
       >Delete</MyButton
     >
   </div>

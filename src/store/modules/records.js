@@ -54,26 +54,50 @@ const mutations = {
     ];
   },
   SET_MAX_PROFIT: (state) => {
-    let arr = state.profits.sort((a, b) => b.sum - a.sum);
-    state.maxProfit = arr[0].sum;
+    if (state.profits.length === 0) {
+      state.maxProfit = 0;
+    } else {
+      let arr = state.profits.sort((a, b) => b.sum - a.sum);
+      state.maxProfit = arr[0].sum;
+    }
   },
   SET_MAX_EXPENSE: (state) => {
-    let arr = state.expenses.sort((a, b) => b.sum - a.sum);
-    state.maxExpense = arr[0].sum;
+    if (state.expenses.length === 0) {
+      state.maxExpense = 0;
+    } else {
+      let arr = state.expenses.sort((a, b) => b.sum - a.sum);
+      state.maxExpense = arr[0].sum || 0;
+    }
   },
   SET_TOTAL_PROFIT: (state) => {
-    const num = state.profits.reduce(
-      (acc, profit) => acc + parseInt(profit.sum),
-      0
-    );
-    state.totalProfit = num;
+    if (state.profits.length === 0) {
+      state.totalProfit = 0;
+    } else {
+      const num = state.profits.reduce(
+        (acc, profit) => acc + parseInt(profit.sum),
+        0
+      );
+      state.totalProfit = num;
+    }
   },
   SET_TOTAL_EXPENSE: (state) => {
-    const num = state.expenses.reduce(
-      (acc, profit) => acc + parseInt(profit.sum),
-      0
-    );
-    state.totalExpense = num;
+    if (state.expenses.length === 0) {
+      state.totalExpense = 0;
+    } else {
+      const num = state.expenses.reduce(
+        (acc, profit) => acc + parseInt(profit.sum),
+        0
+      );
+      state.totalExpense = num;
+    }
+  },
+  DELETE_PROFIT_FROM_LIST: (state, data) => {
+    let newList = state.profits.filter((profit) => profit.id !== data);
+    state.profits = newList;
+  },
+  DELETE_EXPENSE_FROM_LIST: (state, data) => {
+    let newList = state.expenses.filter((expense) => expense.id !== data);
+    state.expenses = newList;
   },
 };
 const actions = {
@@ -84,6 +108,16 @@ const actions = {
   },
   SET_EXPENSES: ({ commit }, payload) => {
     commit("SET_EXPENSES", payload);
+    commit("SET_MAX_EXPENSE");
+    commit("SET_TOTAL_EXPENSE");
+  },
+  DELETE_PROFIT_FROM_LIST: ({ commit }, payload) => {
+    commit("DELETE_PROFIT_FROM_LIST", payload);
+    commit("SET_MAX_PROFIT");
+    commit("SET_TOTAL_PROFIT");
+  },
+  DELETE_EXPENSE_FROM_LIST: ({ commit }, payload) => {
+    commit("DELETE_EXPENSE_FROM_LIST", payload);
     commit("SET_MAX_EXPENSE");
     commit("SET_TOTAL_EXPENSE");
   },

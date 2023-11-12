@@ -38,6 +38,14 @@ const mutations = {
       return;
     });
   },
+  DELETE_CATEGORY_EXPENSE: (state, data) => {
+    state.allCategories.map((category) => {
+      if (category.name === data.name) {
+        return (category.expense = category.expense - parseInt(data.expense));
+      }
+      return;
+    });
+  },
 };
 const actions = {
   // GET_CATEGORIES: ({ commit }) => {
@@ -49,6 +57,9 @@ const actions = {
   },
   CHANGE_CATEGORY: ({ commit }, payload) => {
     commit("SET_EXPENSE", payload);
+  },
+  DELETE_CATEGORY_EXPENSE: ({ commit }, payload) => {
+    commit("DELETE_CATEGORY_EXPENSE", payload);
   },
 };
 export default {

@@ -17,6 +17,11 @@ export default {
       SET_PROFITS: "RECORDS/SET_PROFITS",
       SET_EXPENSES: "RECORDS/SET_EXPENSES",
       CHANGE_CATEGORY: "CATEGORIES/CHANGE_CATEGORY",
+      DELETE_PROFIT: "BALANCE/DELETE_PROFIT",
+      DELETE_PROFIT_FROM_LIST: "RECORDS/DELETE_PROFIT_FROM_LIST",
+      DELETE_EXPENSE: "BALANCE/DELETE_EXPENSE",
+      DELETE_EXPENSE_FROM_LIST: "RECORDS/DELETE_EXPENSE_FROM_LIST",
+      DELETE_CATEGORY_EXPENSE: "CATEGORIES/DELETE_CATEGORY_EXPENSE",
     }),
     updateBalance() {
       this.SET_BALANCE();
@@ -38,6 +43,15 @@ export default {
     },
     changeCategoryData(data) {
       this.CHANGE_CATEGORY(data);
+    },
+    deleteProfit(sum, id) {
+      this.DELETE_PROFIT(sum);
+      this.DELETE_PROFIT_FROM_LIST(id);
+    },
+    deleteExpense(sum, id, name) {
+      this.DELETE_EXPENSE(sum);
+      this.DELETE_EXPENSE_FROM_LIST(id);
+      this.DELETE_CATEGORY_EXPENSE({ name: name, expense: sum });
     },
   },
 };
