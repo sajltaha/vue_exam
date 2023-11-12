@@ -16,9 +16,6 @@ export default {
       categoryName: "",
     };
   },
-  mounted() {
-    this.updateBalance();
-  },
   methods: {
     showProfitModal() {
       this.profitModal = !this.profitModal;

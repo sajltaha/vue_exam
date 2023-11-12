@@ -26,6 +26,12 @@ const mutations = {
           expense: 0,
         },
       ];
+      localStorage.setItem(
+        "categories",
+        JSON.stringify({
+          allCategories: state.allCategories,
+        })
+      );
     } else {
       alert("Already have!");
     }
@@ -37,6 +43,12 @@ const mutations = {
       }
       return;
     });
+    localStorage.setItem(
+      "categories",
+      JSON.stringify({
+        allCategories: state.allCategories,
+      })
+    );
   },
   DELETE_CATEGORY_EXPENSE: (state, data) => {
     state.allCategories.map((category) => {
@@ -45,13 +57,25 @@ const mutations = {
       }
       return;
     });
+    localStorage.setItem(
+      "categories",
+      JSON.stringify({
+        allCategories: state.allCategories,
+      })
+    );
+  },
+  SET_FULL_CATEGORIES: (state, data) => {
+    if (data) {
+      state.allCategories = data.allCategories;
+    }
   },
 };
 const actions = {
-  // GET_CATEGORIES: ({ commit }) => {
-  //   const categories = JSON.parse(localStorage.getItem("categories")) || [];
-  //   commit("SET_CATEGORIES", categories);
-  // },
+  GET_CATEGORIES: ({ commit }) => {
+    const categories =
+      JSON.parse(localStorage.getItem("categories")) || undefined;
+    commit("SET_FULL_CATEGORIES", categories);
+  },
   CREATE_CATEGORY: ({ commit }, payload) => {
     commit("PUSH_CATEGORY", payload);
   },

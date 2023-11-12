@@ -22,6 +22,9 @@ export default {
       DELETE_EXPENSE: "BALANCE/DELETE_EXPENSE",
       DELETE_EXPENSE_FROM_LIST: "RECORDS/DELETE_EXPENSE_FROM_LIST",
       DELETE_CATEGORY_EXPENSE: "CATEGORIES/DELETE_CATEGORY_EXPENSE",
+      GET_BALANCE: "BALANCE/GET_BALANCE",
+      GET_CATEGORIES: "CATEGORIES/GET_CATEGORIES",
+      GET_RECORDS: "RECORDS/GET_RECORDS",
     }),
     updateBalance() {
       this.SET_BALANCE();
@@ -52,6 +55,11 @@ export default {
       this.DELETE_EXPENSE(sum);
       this.DELETE_EXPENSE_FROM_LIST(id);
       this.DELETE_CATEGORY_EXPENSE({ name: name, expense: sum });
+    },
+    initApp() {
+      this.GET_BALANCE();
+      this.GET_CATEGORIES();
+      this.GET_RECORDS();
     },
   },
 };
